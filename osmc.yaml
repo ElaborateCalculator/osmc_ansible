@@ -1,7 +1,9 @@
 # Master playbook
 - name: Deploy osmc pattern
   hosts: pi
+  vars_files:
+    - roles/osmc/vars/secrets.yml
   roles:
-      osmc
+      - osmc
      
     
