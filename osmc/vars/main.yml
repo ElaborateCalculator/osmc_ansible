@@ -1,0 +1,19 @@
+---
+# vars file for osmc
+vars:
+    osmc_default_user: osmc
+    osmc_default_pass: osmc
+    mysql_host: 192.168.12.1
+    mysql_port: 3306
+    mysql_user: osmc
+    nagios_host: 192.168.12.1
+    ldap_uri: ldaps://rivendell.middle.earth
+    ldap_basedn: dc=middle,dc=earth
+    ldap_sudoers_ou: OU=Sudoers
+    ldap_ssl_cert: /etc/ssl/certs/middleearth.crt
+    krb_server: rivendell.middle.earth
+    krb_realm: MIDDLE.EARTH
+    krb_domain: middle.earth
+        
+vars_files:
+    - secrets.yml

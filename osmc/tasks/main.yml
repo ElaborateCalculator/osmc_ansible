@@ -1,0 +1,37 @@
+---
+# tasks file for osmc
+- name:	Install packages
+    apt:
+        package: {{ item }}
+        update_cache: yes
+        cache_valid_time: 3600
+    become: True
+    with_items:
+        - krb5-config
+        - krb5-user
+        - ssh-krb5
+        - screen
+        - dselect
+        - aptitude
+        - sudo-ldap
+        - python-openssl
+        - joe
+        - sssd 
+        - sssd_ldap 
+        - ldap-utils
+        - sssd-tools
+        - libnss-sss
+        - libpam-sss
+        - libsss-sudo
+        - cracklib-runtime
+- name: Set passwords
+    shell: echo {{ item }} | chpwasswd
+    with_items:
+        - 'root:'{{ root_pass }}
+        - {{ osmc_default_user }}':'{{ osmc_pass }}
+    become: True
+- name: Set automatic homedir creation
+    lineinfile:
+        path: /etc/pam.d/common-session
+        line: session optional        pam_mkhomedir.so
+        insertafter: '^session required.*pam_unix.so'
