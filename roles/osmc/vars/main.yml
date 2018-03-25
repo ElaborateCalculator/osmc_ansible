@@ -7,6 +7,7 @@ vars:
     mysql_port: 3306
     mysql_user: osmc
     nagios_host: 192.168.12.1
+    nas_host: 192.168.12.3
     ldap_uri: ldaps://rivendell.middle.earth
     ldap_basedn: dc=middle,dc=earth
     ldap_sudoers_ou: OU=Sudoers

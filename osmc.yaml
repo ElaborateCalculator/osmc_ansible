@@ -1,0 +1,7 @@
+# Master playbook
+- name: Deploy osmc pattern
+  hosts: pi
+  roles:
+      osmc
+     
+    

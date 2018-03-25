@@ -2,6 +2,6 @@ command[check_load]=/usr/lib/nagios/plugins/check_load -w 15,10,5 -c 30,25,20
 command[check_total_procs]=/usr/lib/nagios/plugins/check_procs -w 150 -c 200 
 command[check_disk_root]=/usr/lib/nagios/plugins/check_disk -w 20% -c 10% -p /
 command[check_disk_boot]=/usr/lib/nagios/plugins/check_disk -w 20% -c 10% -p /boot
-command[check_ssh]=/usr/lib/nagios/plugins/check_ssh {{ ansible_fqdn }}
+command[check_ssh]=/usr/lib/nagios/plugins/check_ssh {{ inventory_hostname }}
 command[check_proc_sssd]=/usr/lib/nagios/plugins/check_procs -w 1:1 -c 1:2 -C sssd
 command[check_proc_kodi]=/usr/lib/nagios/plugins/check_procs -w 1:2 -c 0:3 -C kodi.bin
