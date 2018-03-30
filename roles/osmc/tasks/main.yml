@@ -4,18 +4,30 @@
   hostname:
     name: "{{ inventory_hostname }}"
   become: True
+- name: Update hosts file
+  lineinfile:
+    path: /etc/hosts
+    regexp: '^127\.0\.1\.1'
+    line: 127.0.1.1 {{ inventory_hostname }} {{ inventory_hostname_short }}
+    owner: root 
+    group: root 
+    mode: 0644
+  become: True
 - name: Set passwords
   shell: echo {{ item }} | /usr/sbin/chpasswd
   with_items:
     - root:{{ root_pass }}
     - "{{ osmc_default_user }}:{{ osmc_pass }}"
   become: True
+  no_log: True
 - name:	Install packages
   apt:
     package: "{{ item }}"
     update_cache: yes
     cache_valid_time: 3600
   become: True
+  environment:
+    PATH: "{{ ansible_env.PATH }}:/sbin:/usr/sbin"
   with_items:
     - krb5-config
     - krb5-user
