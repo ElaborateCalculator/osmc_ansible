@@ -49,6 +49,8 @@
     - nagios-nrpe-server
     - nagios-plugins
     - rsyslog
+    - man-db
+    - manpages
 - name: Install rsyslog cfg
   copy:
     src: files/rsyslog.conf
