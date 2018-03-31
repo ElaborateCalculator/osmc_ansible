@@ -22,5 +22,5 @@ URI  {{ ldap_uri }}
 TLS_REQCERT     demand
 
 # For sudo use
-SUDOERS_BASE {ldap_sudoers_ou }},{{ ldap_basedn }}
+SUDOERS_BASE {{ ldap_sudoers_ou }},{{ ldap_basedn }}
 #SUDOERS_DEBUG 2
