@@ -1,38 +1,54 @@
-Role Name
+osmc
 =========
 
-A brief description of the role goes here.
+Deploys local cfg to OSMC Raspberry Pi devices
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+OSMC installed, network configured, ssh key shared to `osmc` user
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+* vars/main.yml
+  * `osmc_default_user`: Default OSMC user (not currently used)
+  * `osmc_default_pass`: Default OSMC password (not currently used)
+  * `mysql_host`: Host for Kodi MySQL db backend
+  * `mysql_port`: Port for Kodi MySQL db backend
+  * `mysql_user`: User for Kodi MySQL db backend
+  * `nagios_host`: Host for Nagios service
+  * `nas_host`: Host for Kodi sources
+  * `ldap_uri`: LDAP URI for name services
+  * `ldap_basedn`: LDAP base DN
+  * `ldap_sudoers_ou`: LDAP sudoers OU
+  * `ldap_ssl_cert`: SSL cert for secure LDAP
+  * `krb_server`: Kerberos controller
+  * `krb_realm`: Kerberos realm
+  * `krb_domain`: Kerberos domain
+* vars/secrets.yml
+  * `osmc_pass`: New password for OSMC default user
+  * `root_pass`: New password for root
+  * `mysql_pass`: Password for Kodi MySQL db backend
+  * `krb_prin`: Kerberos administration principal
+  * `krb_pass`: Kerberos administration principal password
+  * `mpg_codec`: Comma separated list of MPG2 codec keys (max 8)
+  * `wvc_codec`: Comma separated list of WVC1 codec keys (max 8)
+
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+See `osmc.tml` in root directory
 
 License
 -------
 
-BSD
+GPL v3
 
-Author Information
-------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
