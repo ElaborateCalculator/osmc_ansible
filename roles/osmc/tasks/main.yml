@@ -48,6 +48,21 @@
     - cracklib-runtime
     - nagios-nrpe-server
     - nagios-plugins
+    - rsyslog
+- name: Install rsyslog cfg
+  copy:
+    src: files/rsyslog.conf
+    dest: /etc/rsyslog.conf
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  become: True
+- name: Restart rsyslog
+  service:
+    name: rsyslog
+    state: restarted
+  become: True
 - name: Set automatic homedir creation
   lineinfile:
     path: /etc/pam.d/common-session
