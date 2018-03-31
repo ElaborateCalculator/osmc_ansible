@@ -1,6 +1,10 @@
 # Master playbook
 - name: Deploy osmc pattern
   hosts: pi
+  gather_facts: False
+  pre_tasks:
+    - setup:
+        gather_subset: "!hardware"
   vars_files:
     - roles/osmc/vars/secrets.yml
   roles:
