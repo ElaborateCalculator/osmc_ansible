@@ -1,0 +1,34 @@
+---
+- name: Init test VM
+  hosts: all
+  tasks:
+  - name: Create osmc user
+    user:
+        comment: osmc
+        createhome: yes
+        generate_ssh_key: yes
+        name: osmc
+        shell: /bin/bash
+        password: osmc
+    become: True
+  - name: Install sudoers files
+    copy:
+        src: files/{{ item }}
+        dest: /etc/sudoers.d/{{ item }}
+        owner: root
+        group: root
+        mode: 0440
+    become: True
+    with_items:
+        - osmc-disable-rbp-update
+        - osmc-no-secure-path
+        - osmc-no-sudo-password
+  - name: Manage ssh keys
+    authorized_key:
+      key: "{{ item }}"
+      user: osmc
+    with_file:
+      - /home/darren/.ssh/id_rsa.pub
+      - /home/darren/.ssh/id_ou.pub
+    become: True
+

@@ -1,2 +1,7 @@
-[pi]
+[pitest]
 pitest.middle.earth ansible_host=127.0.0.1 ansible_port=2322
+
+[pi]
+pi.middle.earth	ansible_host=192.168.12.31
+pikitchen.middle.earth ansible_host=192.168.12.36
+piattic.middle.earth ansible_host=192.168.12.43
