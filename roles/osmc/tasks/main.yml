@@ -54,6 +54,17 @@
     - cron-app-osmc
     - anacron
     - logrotate
+- name: Set locales
+  locale_gen:
+    name: {{ item }}
+  with_items:
+    - en_IE
+    - en_IE.UTF-8
+    - en_IE@euro
+  become: True
+- name: Generate locales
+  command: /usr/sbin/locale-gen
+  become: True
 - name: Install rsyslog cfg
   copy:
     src: files/rsyslog.conf
