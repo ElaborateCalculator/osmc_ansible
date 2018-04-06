@@ -51,6 +51,9 @@
     - rsyslog
     - man-db
     - manpages
+    - cron-app-osmc
+    - anacron
+    - logrotate
 - name: Install rsyslog cfg
   copy:
     src: files/rsyslog.conf
