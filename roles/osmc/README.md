@@ -44,7 +44,7 @@ None
 Example Playbook
 ----------------
 
-See `osmc.tml` in root directory
+See `osmc.yml` in root directory
 
 License
 -------
